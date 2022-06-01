@@ -36,7 +36,7 @@
     </header>
     <div id="container">
       <h3>Mouse Events</h3>
-      <button id="btn1">Button 1</button>
+      <button id="btn1" class="btnClass">Button 1</button>
       <button id="btn2">Button 2</button>
       <p class="para1">
         jQuery is a fast, small, and feature-rich JavaScript library. It makes
@@ -46,6 +46,22 @@
         extensibility, jQuery has changed the way that millions of people write
         JavaScript.
       </p>
+      <hr />
+      <form id="form">
+        <label>Name</label><br />
+        <input type="text" id="name" name="name" />
+        <br />
+        <label>Email</label><br />
+        <input type="text" id="email" name="email" />
+        <br />
+        <label>Gender</label><br />
+        <select id="gender" name="gender">
+          <option value="male">Male</option>
+          <option value="female">Female</option>
+        </select>
+        <br />
+        <input type="submit" value="Submit" />
+      </form>
     </div>
 
     <script>
@@ -71,12 +87,56 @@
         $('#btn1').hover(function () {
           $('.para1').toggle();
         });
-        */
         $('#btn1').on('mouseenter', function () {
           $('.para1').toggle();
         });
         $('#btn1').on('mouseleave', function () {
           $('.para1').toggle();
+        });
+
+        $('#btn1').on('mousemove', function () {
+          $('.para1').toggle();
+        });
+
+        // it works like when you hold the clicked mouse and release it. mousedown must be paired with mouseup.
+        $('#btn1').on('mousedown', function () {
+          $('.para1').toggle();
+        });
+
+        $('#btn1').on('mouseup', function () {
+          $('.para1').toggle();
+        });
+        $('#btn1').click(function (e) {
+          // alert(e.currentTarget.id);
+          // alert(e.currentTarget.innerHTML);
+          // alert(e.currentTarget.outerHTML);
+          // alert(e.currentTarget.className);
+        });
+        $(document).on('mousemove', function (e) {
+          $('#coords').html('Coordinate Y: ' + e.clientY + ' X: ' + e.clientX);
+        });
+        $('input').focus(function () {
+          // alert('Focus');
+          $(this).css('background', 'pink');
+        });
+
+        $('input').blur(function () {
+          // alert('Focus');
+          $(this).css('background', '#f4f4f4');
+        });
+
+        $('input').keyup(function (e) {
+          console.log(e.target.value);
+        });
+                */
+
+        $('select#gender').change(function (e) {
+          alert(e.target.value);
+        });
+
+        $('#form').submit(function (e) {
+          e.preventDefault();
+          console.log('Submitted.');
         });
       });
     </script>

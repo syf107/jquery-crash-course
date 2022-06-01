@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.min.js"
+      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+      crossorigin="anonymous"
+    ></script>
+    <style>
+      body {
+        margin: 20px;
+      }
+      .radio-container {
+        margin-top: 30px;
+      }
+      .radio-container label {
+        margin-bottom: 10px;
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <select id="dropdown-selector">
+      <option value="Football">Football</option>
+      <option value="Basketball">Basketball</option>
+      <option value="Handball">Handball</option>
+    </select>
+
+    <div class="radio-container">
+      <label
+        ><input type="radio" name="sport" checked value="Football" />
+        Football</label
+      >
+      <label
+        ><input type="radio" name="sport" value="Basketball" />
+        Basketball</label
+      >
+      <label
+        ><input type="radio" name="sport" value="Handball" /> Handball</label
+      >
+    </div>
+
+    <script>
+      //   $('#dropdown-selector').on('change', function () {
+      //     const value = $(this).val();
+      //     $(`.radio-container label input[value|=${value}]`).prop('checked', true);
+      //   });
+      const dropDownSelector = document.querySelector('#dropdown-selector');
+
+      dropDownSelector.addEventListener('change', function () {
+        const value = dropDownSelector.value;
+        console.log(value);
+
+        const radioContainer = document.querySelector(
+          `.radio-container label input[value=${value}]`
+        );
+
+        radioContainer.checked = true;
+      });
+    </script>
+  </body>
+</html>
